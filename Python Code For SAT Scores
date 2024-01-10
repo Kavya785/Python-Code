@@ -1,0 +1,9 @@
+import json
+
+class SATResultsSystem:
+    def --init--(selg):
+        self.data = []
+
+    def insert_data(self):
+        name = input("Enter Name: ")
+        
