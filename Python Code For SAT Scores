@@ -47,4 +47,54 @@ class SATResultsSystem:
          print(f"No record found for {name}")
 
   def delete_record(self, name):
-      for
+      for record in self.data:
+          if record["Name"] == name:
+             self.data.remove(record)
+             print(f"Record for {name} deleted successfully.")
+             return
+      print(f"No record found for {name}")
+
+def save_to_file(self, filename):
+    with open(filename, 'w') as file:
+         json.dump(self.data, file, indent=2)
+    print(f"Data saved to {filename}.")
+
+
+# Main Program
+sat_system = SATResultsSystem()
+
+while True:
+    print("\nMenu:")
+    print("1. Insert data")
+    print("2. View all data")
+    print("3. Get rank")
+    print("4. Update score")
+    print("5. Delete one record")
+    print("6. Save data to file")
+    print("7. Exit")
+
+    choice = input("Enter your choice (1-7): ")
+
+    if choice == "1":
+       sat_system.insert_data()
+    elif choice == "2":
+       sat_system.view_all_data()
+    elif choice == "3":
+       name = input("Enter Name to get rank: ")
+       print(sat_system.get_rank(name))
+    elif choice == "4":
+       name = input("Enter Name to update score: ")
+       sat_system.update_score(name)
+    elif choice == "5":
+       name = input("Enter Name to delete record: ")
+       sat_system.delete_record(name)
+    elif choice == "6":
+       filename = input("Enter filename to save data: ")
+       sat_system.save_to_file(filename)
+    elif choice == "7":
+       print("Exiting program. Goodbye!")
+       break
+    else:
+       print("Invalid choice. Please enter a number between 1 and 7.")
+       
+                        
