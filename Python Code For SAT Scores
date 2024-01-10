@@ -1,7 +1,7 @@
 import json
 
 class SATResultsSystem:
-    def --init--(selg):
+    def --init--(self):
         self.data = []
 
     def insert_data(self):
