@@ -6,4 +6,45 @@ class SATResultsSystem:
 
     def insert_data(self):
         name = input("Enter Name: ")
-        
+        address = input("Enter Address: ")
+        city = input("Enter City: ")
+        country = input("Enter Country: ")
+        pincode = input("Enter Pincode: ")
+        sat_score = input("Enter SAT Score: ")
+        passed = "Pass" if sat_score > 30 else "Fail"
+
+        record = {
+            "Name": name,
+            "Address": address,
+            "City": city,
+            "Country": country,
+            "Pincode": pincode,
+            "SAT Score": sat_score,
+            "Passed": passed
+       }
+
+       self.data.append(record)
+       print("Data inserted successfully.")
+
+  def view_all_data(self):
+      print(json.dumps(self.data, indent=2))
+
+  def get_rank(self, name):
+      sorted_data = sorted(self.data, key=lambda x: x["SAT Score"], reverse=True)
+      for i, record in enumerate(sorted_data, start=1):
+          if record["Name"] == name:
+             return f"Rank for {name}: {i}
+      return f"No record found for {name}"
+
+  def update_score(self, name):
+      for record in self.data:
+          if record["Name"] == name:
+             new_score = float(input(f"Enter new SAT Score for {name}: "))
+             record["SAT Score"] = new_score
+             record["Passed"] = "Pass" if new_score > 30 else "Fail"
+             print(f"SAT Score updated successfully for {name}: ")
+             return
+         print(f"No record found for {name}")
+
+  def delete_record(self, name):
+      for
